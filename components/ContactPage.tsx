@@ -25,7 +25,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ onBack }) => {
   const mapApps = [
     {
       name: '네이버 지도',
-      color: 'bg-[#03C75A]',
+      color: 'bg-[#03C75A] text-white',
       icon: 'N',
       url: `https://map.naver.com/v5/search/${addressQuery}`
     },
@@ -69,37 +69,29 @@ const ContactPage: React.FC<ContactPageProps> = ({ onBack }) => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column: Map & Buttons */}
           <div className="lg:col-span-2 space-y-8">
-            <div className="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-200 relative aspect-video">
-              {/* Actual Map Placeholder - In production, this would be an iframe or dynamic map */}
-              <iframe 
-                src={`https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${addressQuery}`}
-                className="w-full h-full border-0"
-                allowFullScreen
-                loading="lazy"
-                title="Academy Location"
-              ></iframe>
-              {/* Fallback overlay in case API key is missing for demo */}
-              <div className="absolute inset-0 bg-slate-100 flex items-center justify-center pointer-events-none">
+            <div className="bg-slate-100 rounded-3xl overflow-hidden shadow-xl border border-slate-200 relative aspect-video flex items-center justify-center">
+                 {/* Visual Map Fallback (Always Shown for Stability) */}
                  <div className="text-center p-8">
                     <MapPin className="h-16 w-16 text-red-500 mx-auto mb-4 animate-bounce" />
-                    <p className="text-xl font-black text-slate-800 mb-2">{ACADEMY_INFO.name}</p>
-                    <p className="text-slate-500">{ACADEMY_INFO.address}</p>
-                    <div className="mt-6 flex flex-wrap justify-center gap-2 pointer-events-auto">
+                    <p className="text-2xl font-black text-slate-800 mb-2">{ACADEMY_INFO.name}</p>
+                    <p className="text-slate-600 font-medium mb-1">{ACADEMY_INFO.address}</p>
+                    <p className="text-blue-600 font-bold mb-8">고덕역 4번 출구에서 도보 약 5분</p>
+                    
+                    <div className="flex flex-wrap justify-center gap-3">
                       {mapApps.map((app) => (
                         <a 
                           key={app.name}
                           href={app.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`${app.color} px-4 py-2 rounded-full font-bold text-sm shadow-md hover:scale-105 transition-transform flex items-center gap-2`}
+                          className={`${app.color} px-6 py-3 rounded-full font-bold text-sm shadow-md hover:scale-105 transition-transform flex items-center gap-2`}
                         >
                           <span className="w-5 h-5 flex items-center justify-center rounded-sm bg-black/10 text-[10px] font-black">{app.icon}</span>
-                          {app.name}
+                          {app.name} 앱에서 보기
                         </a>
                       ))}
                     </div>
                  </div>
-              </div>
             </div>
 
             <div className="bg-blue-600 rounded-3xl p-8 text-white shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
@@ -190,33 +182,6 @@ const ContactPage: React.FC<ContactPageProps> = ({ onBack }) => {
             </div>
           </div>
         </div>
-
-        {/* Local Tips Section */}
-        <section className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm flex items-start gap-5">
-             <div className="bg-yellow-100 p-4 rounded-2xl text-yellow-600">
-               <MapIcon className="h-8 w-8" />
-             </div>
-             <div>
-               <h3 className="text-xl font-bold mb-2">찾아오시는 길 팁</h3>
-               <p className="text-slate-600 text-sm leading-relaxed">
-                 고덕역 이마트 강동점 건너편, 메가박스 고덕점 인근 상가 건물 11층입니다. 
-                 1층에 '파리바게뜨'가 있는 건물로 기억하시면 찾기 쉽습니다.
-               </p>
-             </div>
-          </div>
-          <div className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm flex items-start gap-5">
-             <div className="bg-green-100 p-4 rounded-2xl text-green-600">
-               <Navigation className="h-8 w-8" />
-             </div>
-             <div>
-               <h3 className="text-xl font-bold mb-2">주변 안심 하원</h3>
-               <p className="text-slate-600 text-sm leading-relaxed">
-                 밤 10시 이후 하원 시간대에도 주변 유동인구가 많고 밝아 학생들이 안전하게 귀가할 수 있는 최적의 위치입니다.
-               </p>
-             </div>
-          </div>
-        </section>
       </main>
     </div>
   );

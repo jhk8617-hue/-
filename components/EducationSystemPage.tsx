@@ -31,10 +31,10 @@ const EducationSystemPage: React.FC<EducationSystemPageProps> = ({ onBack, onOpe
             <ArrowLeft className="h-5 w-5" />
             메인으로 돌아가기
           </button>
-          <div className="hidden md:block font-bold text-slate-900">Education System Deep Dive</div>
+          <div className="hidden md:block font-bold text-slate-900 uppercase tracking-widest text-sm">Top Education System</div>
           <button 
             onClick={onOpenModal}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold"
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors"
           >
             레벨테스트 신청
           </button>

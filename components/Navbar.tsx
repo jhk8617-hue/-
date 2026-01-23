@@ -34,8 +34,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateHome, onNavigateContact, onNa
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
-            <button onClick={onNavigateHome} className="flex-shrink-0 flex items-center gap-2">
-              < GraduationCap className="h-8 w-8 text-blue-600" />
+            <button onClick={onNavigateHome} className="flex-shrink-0 flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <GraduationCap className="h-8 w-8 text-blue-600" />
               <span className="font-bold text-xl text-slate-800 tracking-tight">
                 {ACADEMY_INFO.name}
               </span>
@@ -48,7 +48,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateHome, onNavigateContact, onNa
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="text-slate-600 hover:text-blue-600 font-medium transition-colors"
+                className="text-slate-600 hover:text-blue-600 font-bold transition-colors py-2 border-b-2 border-transparent hover:border-blue-600"
               >
                 {link.label}
               </a>
@@ -68,14 +68,14 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateHome, onNavigateContact, onNa
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-slate-100">
+        <div className="md:hidden bg-white border-t border-slate-100 animate-in slide-in-from-top duration-300">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="block px-3 py-2 text-base font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-md"
+                className="block px-3 py-4 text-base font-bold text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-md border-l-4 border-transparent hover:border-blue-600"
               >
                 {link.label}
               </a>

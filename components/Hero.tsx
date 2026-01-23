@@ -17,13 +17,13 @@ const Hero: React.FC<HeroProps> = ({ onNavigateSystem }) => {
           alt="Classroom" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-slate-900/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/95 to-slate-900/90"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
         <div className="max-w-full">
-          {/* Super Sized Orange Branding Text - Single Line with Extra Margin */}
-          <div className="text-orange-500 font-black text-[2.5rem] sm:text-[4rem] md:text-[7rem] lg:text-[8.5rem] leading-none mb-16 tracking-tighter animate-in fade-in slide-in-from-top-8 duration-1000 drop-shadow-2xl whitespace-nowrap">
+          {/* Super Sized Orange Branding Text with responsive scaling */}
+          <div className="text-orange-500 font-black text-[2.2rem] sm:text-[3.5rem] md:text-[6rem] lg:text-[7.5rem] leading-none mb-12 tracking-tighter animate-in fade-in slide-in-from-top-8 duration-1000 drop-shadow-2xl whitespace-nowrap">
             Top English Math 학원
           </div>
 
@@ -32,11 +32,10 @@ const Hero: React.FC<HeroProps> = ({ onNavigateSystem }) => {
             <span className="font-medium text-sm md:text-base tracking-wide">강동구 17년 전통의 명문</span>
           </div>
           
-          <h1 className="text-3xl md:text-6xl font-black text-white leading-tight mb-8">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-8">
             2-6명 <span className="text-orange-500">소수정예 수업</span><br />
             <br />
-            <span className="text-orange-500">1:1 <span className="underline decoration-orange-500 underline-offset-8">코칭시스템 적용</span></span><br />
-            <br />
+            <span className="text-orange-500">1:1 <span className="underline decoration-orange-500 underline-offset-[12px] decoration-4">코칭시스템 적용</span></span>
           </h1>
           
           <p className="text-lg md:text-xl text-slate-200 mb-10 leading-relaxed max-w-2xl">
@@ -48,7 +47,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateSystem }) => {
           <div className="flex flex-col sm:flex-row gap-4">
             <button 
               onClick={onNavigateSystem}
-              className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/30 w-fit"
+              className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-500/30 w-fit hover:scale-105 active:scale-95"
             >
               교육 시스템 확인
               <ArrowRight className="h-5 w-5" />
