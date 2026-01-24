@@ -14,19 +14,15 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateHome, onNavigateContact, onNa
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
     if (href === `#${SectionId.CONTACT}` && onNavigateContact) {
-      e.preventDefault();
       onNavigateContact();
-      setIsOpen(false);
     } else if (href === `#${SectionId.SYSTEM}` && onNavigateSystem) {
-      e.preventDefault();
       onNavigateSystem();
-      setIsOpen(false);
     } else if (href === `#${SectionId.HOME}` && onNavigateHome) {
-      e.preventDefault();
       onNavigateHome();
-      setIsOpen(false);
     }
+    setIsOpen(false);
   };
 
   return (
@@ -66,9 +62,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateHome, onNavigateContact, onNa
         </div>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-slate-100 animate-in slide-in-from-top duration-300">
+        <div className="md:hidden bg-white border-t border-slate-100 animate-in">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {NAV_LINKS.map((link) => (
               <a
