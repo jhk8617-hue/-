@@ -1,4 +1,4 @@
-// Added React import to resolve the 'Cannot find namespace React' error.
+
 import React from 'react';
 
 export interface FeatureItem {
@@ -27,4 +27,4 @@ export enum SectionId {
   CONTACT = 'contact',
 }
 
-export type ViewType = 'home' | 'system-detail' | 'contact-detail';
+export type ViewType = 'home' | 'system-detail' | 'contact-detail' | 'apply-detail';

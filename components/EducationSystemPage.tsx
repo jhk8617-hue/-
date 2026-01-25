@@ -2,230 +2,193 @@
 import React from 'react';
 import { 
   ArrowLeft, 
-  CheckCircle2, 
   BookOpen, 
   Target, 
-  Zap, 
-  Clock, 
-  Search, 
   MessageCircle,
   BarChart3,
-  Award
+  Award,
+  ChevronRight,
+  ClipboardCheck,
+  Layout,
+  Layers,
+  Sparkles,
+  Send
 } from 'lucide-react';
 
 interface EducationSystemPageProps {
   onBack: () => void;
-  onOpenModal: () => void;
+  onNavigateApply: () => void;
 }
 
-const EducationSystemPage: React.FC<EducationSystemPageProps> = ({ onBack, onOpenModal }) => {
+const EducationSystemPage: React.FC<EducationSystemPageProps> = ({ onBack, onNavigateApply }) => {
   return (
-    <div className="bg-slate-50 min-h-screen">
-      {/* Header Navigation */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+    <div className="bg-white min-h-screen">
+      {/* Navigation Header */}
+      <header className="bg-white/80 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
           <button 
             onClick={onBack}
-            className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors font-bold"
+            className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-all font-bold group"
           >
-            <ArrowLeft className="h-5 w-5" />
-            메인으로 돌아가기
+            <div className="bg-slate-100 p-2 rounded-full group-hover:bg-blue-50 transition-colors">
+              <ArrowLeft className="h-5 w-5" />
+            </div>
+            <span>이전 페이지로</span>
           </button>
-          <div className="hidden md:block font-bold text-slate-900 uppercase tracking-widest text-sm">Top Education System</div>
+          <div className="font-black text-slate-900 tracking-tighter text-xl">EDUCATION SYSTEM</div>
           <button 
-            onClick={onOpenModal}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors"
+            onClick={onNavigateApply}
+            className="bg-blue-600 text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-blue-700 shadow-lg shadow-blue-100 transition-all flex items-center gap-2"
           >
-            레벨테스트 신청
+            <Send className="h-4 w-4" />
+            상담 신청
           </button>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="bg-blue-600 py-20 text-white">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <span className="inline-block bg-blue-500 text-xs font-bold px-3 py-1 rounded-full mb-4">SYSTEM PHILOSOPHY</span>
-          <h1 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
+      <section className="relative py-24 bg-slate-900 overflow-hidden">
+        <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.pattern')]"></div>
+        <div className="max-w-5xl mx-auto px-4 relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full mb-8 border border-blue-500/30">
+            <Sparkles className="h-4 w-4" />
+            <span className="text-xs font-bold tracking-widest uppercase">17 Years of Excellence</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-8 leading-[1.15] tracking-tight">
             성적 향상을 넘어 <br/> 
-            <span className="text-blue-200">공부하는 습관</span>을 설계합니다
+            <span className="text-blue-500">공부하는 근력</span>을 설계합니다
           </h1>
-          <p className="text-blue-100 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Top English Math 학원은 단순한 지식 전달을 넘어, 
-            학생 스스로가 문제를 해결할 수 있는 '근본적 힘'을 길러내는 5단계 통합 학습 솔루션을 제공합니다.
+          <p className="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+            단순한 지식 전달은 누구나 할 수 있습니다. <br className="hidden md:block"/>
+            Top English Math는 학생이 스스로 문제를 해결하고 성과를 내는 <br className="hidden md:block"/>
+            '완전 학습 메커니즘'을 시스템화했습니다.
           </p>
         </div>
       </section>
 
-      <main className="max-w-6xl mx-auto px-4 py-20 space-y-32">
+      <main className="max-w-6xl mx-auto px-4 py-24 space-y-40">
         
-        {/* Core System 1: 5-Step Mastery */}
-        <section>
-          <div className="flex flex-col md:flex-row items-center gap-12 mb-16">
-            <div className="flex-1">
-              <div className="flex items-center gap-2 text-blue-600 font-bold mb-4">
-                <Zap className="h-5 w-5" />
-                <span>The Core Engine</span>
+        {/* Core System: The 5-Step Mastery */}
+        <section className="animate-in">
+          <div className="text-center mb-16">
+            <span className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-2 block">Our Process</span>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900">빈틈없는 5단계 완전 학습 솔루션</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            {[
+              { icon: <ClipboardCheck />, title: 'Daily Test', desc: '전 수업 복습 및 핵심 개념 인출' },
+              { icon: <Layout />, title: 'Main Lecture', desc: '소수정예 원리 이해 집중 강의' },
+              { icon: <Layers />, title: '1:1 Coaching', desc: '개인별 취약점 즉시 피드백' },
+              { icon: <Target />, title: 'Tracking', desc: '오답 유사 문항 무한 반복 훈련' },
+              { icon: <MessageCircle />, title: 'Reporting', desc: '학습 성취도 학부모 실시간 공유' },
+            ].map((item, i) => (
+              <div key={i} className="group bg-slate-50 p-6 rounded-[2rem] border border-slate-100 hover:bg-white hover:shadow-xl hover:border-blue-100 transition-all duration-300">
+                <div className="bg-white w-12 h-12 rounded-2xl flex items-center justify-center text-blue-600 mb-6 shadow-sm group-hover:scale-110 transition-transform">
+                  {item.icon}
+                </div>
+                <div className="text-slate-400 font-black text-xs mb-2 uppercase tracking-tighter">Step 0{i+1}</div>
+                <h4 className="font-bold text-slate-900 text-lg mb-3">{item.title}</h4>
+                <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
               </div>
-              <h2 className="text-3xl font-black text-slate-900 mb-6">
-                매일 실천하는 <br/> 5단계 성적 완성 시스템
-              </h2>
-              <p className="text-slate-600 text-lg leading-relaxed">
-                강동구 학부모님들이 신뢰하는 가장 큰 이유는 '빈틈없는 관리'에 있습니다. 
-                한 수업 안에서 5단계를 거치며 배운 내용을 100% 본인의 것으로 만듭니다.
-              </p>
+            ))}
+          </div>
+        </section>
+
+        {/* Subjects Split */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          
+          {/* English Curriculum */}
+          <section className="bg-blue-50/50 rounded-[3rem] p-8 md:p-12 border border-blue-100">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="bg-blue-600 p-3 rounded-2xl text-white">
+                <BookOpen className="h-6 w-6" />
+              </div>
+              <h3 className="text-2xl font-black text-slate-900">영어 커리큘럼</h3>
             </div>
-            <div className="flex-1 grid grid-cols-1 gap-4">
+            
+            <div className="space-y-6">
               {[
-                { step: '01', title: '실전 영단어/수학 일일 테스트', desc: '지난 수업 복습 및 기본기 점검' },
-                { step: '02', title: '메인 소수정예 집중 강의', desc: '개념 이해와 핵심 문제 유형 정복' },
-                { step: '03', title: '1:1 맞춤형 밀착 클리닉', desc: '이해가 안 가는 부분 실시간 질의응답' },
-                { step: '04', title: '취약 유형 오답 무한 추적', desc: '틀린 문제는 유사 문항으로 완벽 이해' },
-                { step: '05', title: '데일리 학습 성취도 피드백', desc: '학부모님께 당일 성취도 보고' },
-              ].map((item, i) => (
-                <div key={i} className="flex gap-4 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="text-2xl font-black text-blue-100">{item.step}</div>
+                { label: 'Level 1: 구문 & 어법', detail: '문장의 뼈대를 세우는 끊어읽기와 필수 어법 정복' },
+                { label: 'Level 2: 논리 독해', detail: '지문의 맥락을 파악하고 정답의 근거를 찾는 훈련' },
+                { label: 'Level 3: 내신 변형', detail: '학교별 기출 데이터 기반 예상 문제 및 서술형 완벽 대비' }
+              ].map((step, i) => (
+                <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-blue-50 flex gap-4">
+                  <div className="text-blue-600 font-black text-xl">0{i+1}</div>
                   <div>
-                    <h4 className="font-bold text-slate-900">{item.title}</h4>
-                    <p className="text-sm text-slate-500">{item.desc}</p>
+                    <h4 className="font-bold text-slate-900 mb-1">{step.label}</h4>
+                    <p className="text-slate-500 text-sm leading-relaxed">{step.detail}</p>
                   </div>
                 </div>
               ))}
             </div>
+          </section>
+
+          {/* Math Curriculum */}
+          <section className="bg-red-50/50 rounded-[3rem] p-8 md:p-12 border border-red-100">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="bg-red-500 p-3 rounded-2xl text-white">
+                <BarChart3 className="h-6 w-6" />
+              </div>
+              <h3 className="text-2xl font-black text-slate-900">수학 커리큘럼</h3>
+            </div>
+            
+            <div className="space-y-6">
+              {[
+                { label: '백지 개념 테스트', detail: '눈으로 보는 수학이 아닌, 손으로 써 내려가는 진짜 개념 공부' },
+                { label: '계통별 연계 학습', detail: '이전 학년의 결손을 찾아 현재 진도와 유기적으로 연결' },
+                { label: '3차 오답 관리', detail: '당일 오답 → 주간 누적 → 시험 직전 완성의 3단계 오답 타파' }
+              ].map((step, i) => (
+                <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-red-50 flex gap-4">
+                  <div className="text-red-500 font-black text-xl">0{i+1}</div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 mb-1">{step.label}</h4>
+                    <p className="text-slate-500 text-sm leading-relaxed">{step.detail}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        {/* Management Value */}
+        <section className="bg-slate-900 rounded-[4rem] p-12 md:p-20 text-white relative overflow-hidden text-center">
+          <div className="absolute top-0 right-0 p-10 opacity-10">
+            <Award className="h-64 w-64" />
+          </div>
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-5xl font-black mb-8">
+              "결과가 증명하는 <span className="text-blue-400">1:1 밀착 코칭</span>"
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10">
+                <h4 className="font-bold text-xl mb-4 text-blue-400">소수정예 수업</h4>
+                <p className="text-slate-400 text-sm leading-relaxed">2~6명 정원제로 모든 학생이 수업의 주인공이 됩니다.</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10">
+                <h4 className="font-bold text-xl mb-4 text-blue-400">실시간 피드백</h4>
+                <p className="text-slate-400 text-sm leading-relaxed">모르는 것을 미루지 않고 즉석에서 해결하는 질의응답 시스템.</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10">
+                <h4 className="font-bold text-xl mb-4 text-blue-400">개별 진도 설계</h4>
+                <p className="text-slate-400 text-sm leading-relaxed">학생의 속도와 목표에 맞춘 1:1 맞춤형 로드맵 제공.</p>
+              </div>
+            </div>
+            
+            <button 
+              onClick={onNavigateApply}
+              className="group inline-flex items-center gap-3 bg-blue-600 text-white px-12 py-5 rounded-2xl font-black text-xl hover:bg-white hover:text-blue-600 transition-all shadow-2xl"
+            >
+              상담 신청
+              <ChevronRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
         </section>
 
-        {/* Core System 2: English Curriculum */}
-        <section className="bg-white rounded-[3rem] p-8 md:p-16 shadow-xl shadow-slate-200/50 border border-slate-100">
-          <div className="text-center mb-16">
-             <h2 className="text-3xl font-black text-slate-900 mb-4">English Curriculum</h2>
-             <p className="text-slate-500">읽히지 않는 독해는 버립니다. '구조적 읽기'로 승부합니다.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="space-y-6">
-              <div className="bg-blue-50 p-6 rounded-3xl">
-                <BookOpen className="h-8 w-8 text-blue-600 mb-4" />
-                <h3 className="text-xl font-bold mb-2">구문 & 어법 (The Base)</h3>
-                <ul className="space-y-2 text-sm text-slate-600">
-                  <li>• 문장 성분 단위 끊어 읽기 훈련</li>
-                  <li>• 수능 필수 어법 24포인트 정복</li>
-                  <li>• 직독직해를 넘어선 의미 단위 분석</li>
-                </ul>
-              </div>
-            </div>
-            <div className="space-y-6">
-              <div className="bg-indigo-50 p-6 rounded-3xl">
-                <Search className="h-8 w-8 text-indigo-600 mb-4" />
-                <h3 className="text-xl font-bold mb-2">논리 독해 (The Logic)</h3>
-                <ul className="space-y-2 text-sm text-slate-600">
-                  <li>• 지문 내 핵심 문장(Topic Sentence) 찾기</li>
-                  <li>• 단락 간 논리적 연결 고리 분석</li>
-                  <li>• 빈칸, 순서, 삽입 등 킬러 문항 전략</li>
-                </ul>
-              </div>
-            </div>
-            <div className="space-y-6">
-              <div className="bg-teal-50 p-6 rounded-3xl">
-                <Target className="h-8 w-8 text-teal-600 mb-4" />
-                <h3 className="text-xl font-bold mb-2">실전 내신 (The Grade)</h3>
-                <ul className="space-y-2 text-sm text-slate-600">
-                  <li>• 학교별 부교재/모의고사 변형 문제</li>
-                  <li>• 고득점 결정짓는 고난도 서술형 대비</li>
-                  <li>• 1:1 맞춤 피드백 및 약점 보완</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Core System 3: Math Curriculum */}
-        <section>
-          <div className="flex flex-col md:flex-row-reverse items-center gap-12">
-            <div className="flex-1">
-              <div className="flex items-center gap-2 text-red-600 font-bold mb-4">
-                <BarChart3 className="h-5 w-5" />
-                <span>Math Strategy</span>
-              </div>
-              <h2 className="text-3xl font-black text-slate-900 mb-6">
-                수포자 없는 학원, <br/> 이유 있는 수학 솔루션
-              </h2>
-              <div className="space-y-6">
-                <div className="flex gap-4">
-                   <CheckCircle2 className="h-6 w-6 text-red-500 flex-shrink-0" />
-                   <div>
-                     <h4 className="font-bold">백지 개념 테스트</h4>
-                     <p className="text-slate-500 text-sm">눈으로 보는 수학이 아닌 직접 써보는 수학으로 개념의 뿌리를 깊게 내립니다.</p>
-                   </div>
-                </div>
-                <div className="flex gap-4">
-                   <CheckCircle2 className="h-6 w-6 text-red-500 flex-shrink-0" />
-                   <div>
-                     <h4 className="font-bold">계통별 연계 학습</h4>
-                     <p className="text-slate-500 text-sm">이전 학년의 결손 부분을 찾아내어 현재 진도와 유기적으로 연결합니다.</p>
-                   </div>
-                </div>
-                <div className="flex gap-4">
-                   <CheckCircle2 className="h-6 w-6 text-red-500 flex-shrink-0" />
-                   <div>
-                     <h4 className="font-bold">오답 3차 누적 관리</h4>
-                     <p className="text-slate-500 text-sm">당일 오답 → 1주일 후 복습 → 시험 직전 유사 유형 정복의 3단계 오답 타파.</p>
-                   </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex-1 bg-slate-900 rounded-[3rem] p-10 text-white relative overflow-hidden">
-               <div className="relative z-10">
-                 <h3 className="text-2xl font-black mb-6">수학 레벨별 커리큘럼</h3>
-                 <div className="space-y-4">
-                   <div className="border-l-2 border-red-500 pl-4 py-2">
-                     <div className="text-red-400 text-sm font-bold">LV 1. 기초 다지기</div>
-                     <div className="text-lg">연산 강화 및 교과서 기본 개념 마스터</div>
-                   </div>
-                   <div className="border-l-2 border-orange-500 pl-4 py-2">
-                     <div className="text-orange-400 text-sm font-bold">LV 2. 유형 정복</div>
-                     <div className="text-lg">쎈, RPM 등 유형서 기반 필수 문항 체득</div>
-                   </div>
-                   <div className="border-l-2 border-green-500 pl-4 py-2">
-                     <div className="text-green-400 text-sm font-bold">LV 3. 심화 분석</div>
-                     <div className="text-lg">블랙라벨, 1등급 수학 등 고난도 문항 도출</div>
-                   </div>
-                   <div className="border-l-2 border-blue-500 pl-4 py-2">
-                     <div className="text-blue-400 text-sm font-bold">LV 4. 실전 파이널</div>
-                     <div className="text-lg">강동구 기출 및 모의고사 타임 어택 훈련</div>
-                   </div>
-                 </div>
-               </div>
-               <div className="absolute top-0 right-0 opacity-5 -mr-20 -mt-20">
-                 <Award className="h-80 w-80 text-white" />
-               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Final CTA */}
-        <section className="text-center py-20">
-           <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-12 md:p-20 rounded-[4rem] text-white">
-             <MessageCircle className="h-16 w-16 mx-auto mb-6 opacity-50" />
-             <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight">
-               우리 아이에게 꼭 맞는 <br className="md:hidden"/>
-               맞춤 학습 로드맵을 설계해 드립니다
-             </h2>
-             <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">
-               더 이상 남들이 좋다는 학원을 쫓아다니지 마세요. <br/>
-               학생의 현재를 분석하고 미래를 그리는 Top English Math가 정답입니다.
-             </p>
-             <button 
-               onClick={onOpenModal}
-               className="bg-white text-blue-600 px-12 py-5 rounded-full font-black text-xl hover:bg-blue-50 transition-all shadow-2xl hover:scale-105 active:scale-95"
-             >
-               무료 레벨테스트 및 상담 신청
-             </button>
-           </div>
-        </section>
       </main>
 
-      {/* Footer Mini */}
-      <footer className="bg-white border-t border-slate-200 py-10 text-center">
-        <p className="text-slate-400 text-sm">© 2024 Top English Math Academy. Professional Education System.</p>
+      <footer className="bg-slate-50 border-t border-slate-200 py-12 text-center text-slate-400 text-sm">
+        <p>© 2024 Top English Math 학원. 교육 시스템 상세 안내 페이지.</p>
       </footer>
     </div>
   );

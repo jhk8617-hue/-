@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import { X, CheckCircle, Loader2, Send } from 'lucide-react';
 
-interface LevelTestModalProps {
+interface ConsultationModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const LevelTestModal: React.FC<LevelTestModalProps> = ({ isOpen, onClose }) => {
+const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -25,7 +25,7 @@ const LevelTestModal: React.FC<LevelTestModalProps> = ({ isOpen, onClose }) => {
 
     // Construct the email content
     const recipient = "kys485300@naver.com";
-    const subject = `[탑잉글리쉬매스] 레벨테스트 및 상담 신청 - ${formData.name} 학생`;
+    const subject = `[탑잉글리쉬매스] 상담 신청 - ${formData.name} 학생`;
     const body = `
 안녕하세요, 탑잉글리쉬매스학원입니다.
 웹사이트를 통한 상담 신청 내용입니다.
@@ -33,7 +33,7 @@ const LevelTestModal: React.FC<LevelTestModalProps> = ({ isOpen, onClose }) => {
 ■ 학생 성명: ${formData.name}
 ■ 연락처: ${formData.phone}
 ■ 학교 및 학년: ${formData.school}
-■ 테스트/상담 가능 시간: ${formData.time}
+■ 상담 희망 시간: ${formData.time}
 
 내용을 확인하신 후 연락 부탁드립니다.
     `.trim();
@@ -81,7 +81,7 @@ const LevelTestModal: React.FC<LevelTestModalProps> = ({ isOpen, onClose }) => {
             <div className="bg-blue-100 text-blue-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
               <CheckCircle className="h-12 w-12" />
             </div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-2">신청이 접수되었습니다</h3>
+            <h3 className="text-2xl font-bold text-slate-900 mb-2">상담 신청 접수 완료</h3>
             <p className="text-slate-600 mb-6 leading-relaxed">
               기본 메일 앱이 실행되었습니다. <br/>
               메일을 보내주시면 원장님이 확인 후 <br/>
@@ -100,7 +100,7 @@ const LevelTestModal: React.FC<LevelTestModalProps> = ({ isOpen, onClose }) => {
               <div className="bg-blue-600 p-2 rounded-lg text-white">
                 <Send className="h-5 w-5" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900">레벨테스트 신청</h3>
+              <h3 className="text-2xl font-bold text-slate-900">상담 신청</h3>
             </div>
             <p className="text-slate-500 mb-8 text-sm">
               상담 신청을 하시면 원장님이 직접 안내 연락을 드립니다.
@@ -150,7 +150,7 @@ const LevelTestModal: React.FC<LevelTestModalProps> = ({ isOpen, onClose }) => {
               </div>
 
               <div className="space-y-1">
-                <label className="block text-sm font-semibold text-slate-700 ml-1">테스트 가능시간</label>
+                <label className="block text-sm font-semibold text-slate-700 ml-1">상담 희망 시간</label>
                 <input
                   required
                   disabled={isSubmitting}
@@ -174,7 +174,7 @@ const LevelTestModal: React.FC<LevelTestModalProps> = ({ isOpen, onClose }) => {
                     신청 처리 중...
                   </>
                 ) : (
-                  '신청하기'
+                  '상담 신청하기'
                 )}
               </button>
             </form>
@@ -190,4 +190,4 @@ const LevelTestModal: React.FC<LevelTestModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export default LevelTestModal;
+export default ConsultationModal;

@@ -2,25 +2,19 @@
 import React, { useState } from 'react';
 import { Menu, X, GraduationCap } from 'lucide-react';
 import { NAV_LINKS, ACADEMY_INFO } from '../constants';
-import { SectionId } from '../types';
 
-interface NavbarProps {
-  onNavigateHome?: () => void;
-  onNavigateContact?: () => void;
-  onNavigateSystem?: () => void;
-}
-
-const Navbar: React.FC<NavbarProps> = ({ onNavigateHome, onNavigateContact, onNavigateSystem }) => {
+const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    if (href === `#${SectionId.CONTACT}` && onNavigateContact) {
-      onNavigateContact();
-    } else if (href === `#${SectionId.SYSTEM}` && onNavigateSystem) {
-      onNavigateSystem();
-    } else if (href === `#${SectionId.HOME}` && onNavigateHome) {
-      onNavigateHome();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: 'smooth'
+      });
     }
     setIsOpen(false);
   };
@@ -30,12 +24,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateHome, onNavigateContact, onNa
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
-            <button onClick={onNavigateHome} className="flex-shrink-0 flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <GraduationCap className="h-8 w-8 text-blue-600" />
+            <a href="#" className="flex-shrink-0 flex items-center gap-2 hover:opacity-80 transition-opacity">
+              < GraduationCap className="h-8 w-8 text-blue-600" />
               <span className="font-bold text-xl text-slate-800 tracking-tight">
                 {ACADEMY_INFO.name}
               </span>
-            </button>
+            </a>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
@@ -43,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateHome, onNavigateContact, onNa
               <a
                 key={link.label}
                 href={link.href}
-                onClick={(e) => handleLinkClick(e, link.href)}
+                onClick={(e) => handleScroll(e, link.href)}
                 className="text-slate-600 hover:text-blue-600 font-bold transition-colors py-2 border-b-2 border-transparent hover:border-blue-600"
               >
                 {link.label}
@@ -69,7 +63,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateHome, onNavigateContact, onNa
               <a
                 key={link.label}
                 href={link.href}
-                onClick={(e) => handleLinkClick(e, link.href)}
+                onClick={(e) => handleScroll(e, link.href)}
                 className="block px-3 py-4 text-base font-bold text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-md border-l-4 border-transparent hover:border-blue-600"
               >
                 {link.label}

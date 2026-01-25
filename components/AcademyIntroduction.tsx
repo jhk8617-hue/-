@@ -13,7 +13,7 @@ import {
 import { SectionId } from '../types';
 
 interface AcademyIntroductionProps {
-  onOpenModal?: () => void;
+  onOpenModal: () => void;
 }
 
 const AcademyIntroduction: React.FC<AcademyIntroductionProps> = ({ onOpenModal }) => {
@@ -135,7 +135,7 @@ const AcademyIntroduction: React.FC<AcademyIntroductionProps> = ({ onOpenModal }
               onClick={onOpenModal}
               className="group flex items-center gap-3 mx-auto bg-white text-blue-600 px-12 py-5 rounded-2xl font-black text-xl hover:bg-blue-50 transition-all shadow-lg hover:scale-105 active:scale-95"
             >
-              레벨테스트 무료 신청하기
+              상담 신청
               <ChevronRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>

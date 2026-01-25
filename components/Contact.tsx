@@ -1,14 +1,10 @@
 
 import React from 'react';
-import { MapPin, Phone, Clock, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, Clock } from 'lucide-react';
 import { ACADEMY_INFO } from '../constants';
 import { SectionId } from '../types';
 
-interface ContactProps {
-  onNavigateContact?: () => void;
-}
-
-const Contact: React.FC<ContactProps> = ({ onNavigateContact }) => {
+const Contact: React.FC = () => {
   return (
     <footer id={SectionId.CONTACT} className="bg-slate-900 text-white pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,37 +37,18 @@ const Contact: React.FC<ContactProps> = ({ onNavigateContact }) => {
                 </div>
               </div>
             </div>
-            
-            <button 
-              onClick={onNavigateContact}
-              className="mt-8 inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg"
-            >
-              상세 위치 및 지도보기
-              <ExternalLink className="h-4 w-4" />
-            </button>
           </div>
 
-          <div 
-            onClick={onNavigateContact}
-            className="h-96 w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-700 bg-slate-800 relative cursor-pointer group"
-          >
-             {/* Simulated Map */}
-             <div className="absolute inset-0 bg-slate-700 flex items-center justify-center">
-                 <img 
-                   src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=2066&auto=format&fit=crop" 
-                   alt="Location Map Placeholder" 
-                   className="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-500"
-                 />
-                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                   <MapPin className="h-12 w-12 text-red-500 animate-bounce" />
-                   <div className="bg-white text-slate-900 px-4 py-2 rounded-lg shadow-lg font-bold mt-2">
-                     고덕역 4번 출구 447m
-                   </div>
-                   <div className="mt-4 bg-blue-600/90 text-white px-4 py-1.5 rounded-full text-xs font-bold backdrop-blur-sm group-hover:bg-blue-500 transition-colors">
-                     클릭하여 상세 정보 보기
-                   </div>
-                 </div>
-             </div>
+          <div className="h-96 w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-700 bg-slate-800 relative">
+             <iframe 
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(ACADEMY_INFO.address)}&t=&z=16&ie=UTF8&iwloc=&output=embed`}
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen 
+                loading="lazy" 
+                title="Academy Location"
+              ></iframe>
           </div>
         </div>
 

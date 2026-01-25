@@ -1,13 +1,23 @@
 
 import React from 'react';
-import { ArrowRight, Star, ChevronDown } from 'lucide-react';
+import { ArrowRight, Star, ChevronDown, Send } from 'lucide-react';
 import { SectionId } from '../types';
 
 interface HeroProps {
-  onNavigateSystem?: () => void;
+  onOpenModal: () => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ onNavigateSystem }) => {
+const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
+  const scrollToSystem = () => {
+    const element = document.getElementById(SectionId.SYSTEM);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section id={SectionId.HOME} className="relative min-h-[90vh] flex items-center pt-20 pb-20 overflow-hidden">
       {/* Background Image with Deep Overlay */}
@@ -56,13 +66,20 @@ const Hero: React.FC<HeroProps> = ({ onNavigateSystem }) => {
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-6">
+            <div className="flex flex-col sm:flex-row gap-4">
               <button 
-                onClick={onNavigateSystem}
-                className="group inline-flex items-center justify-center gap-3 bg-blue-600 text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-orange-500 transition-all shadow-2xl hover:shadow-orange-500/40 hover:-translate-y-1 active:translate-y-0"
+                onClick={scrollToSystem}
+                className="group inline-flex items-center justify-center gap-3 bg-white text-slate-900 px-8 py-5 rounded-2xl font-black text-lg hover:bg-slate-100 transition-all shadow-2xl"
               >
-                교육 시스템 확인
-                <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                시스템 확인
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button 
+                onClick={onOpenModal}
+                className="group inline-flex items-center justify-center gap-3 bg-blue-600 text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-orange-500 transition-all shadow-2xl shadow-blue-500/20"
+              >
+                상담 신청
+                <Send className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
           </div>

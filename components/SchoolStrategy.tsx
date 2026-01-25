@@ -5,7 +5,7 @@ import { SCHOOL_STRATEGIES } from '../constants';
 import { SectionId } from '../types';
 
 interface SchoolStrategyProps {
-  onOpenModal?: () => void;
+  onOpenModal: () => void;
 }
 
 const SchoolStrategy: React.FC<SchoolStrategyProps> = ({ onOpenModal }) => {
@@ -62,13 +62,13 @@ const SchoolStrategy: React.FC<SchoolStrategyProps> = ({ onOpenModal }) => {
              </h3>
              <p className="text-slate-400 mb-10 max-w-2xl mx-auto text-lg leading-relaxed">
                다음 학기 1등급을 결정짓는 것은 지금 이 순간의 선택입니다.<br />
-               정밀 레벨테스트로 자녀의 객관적인 위치를 파악하세요.
+               정밀 학습 진단으로 자녀의 객관적인 위치를 파악하세요.
              </p>
              <button 
                onClick={onOpenModal}
                className="bg-blue-600 text-white px-12 py-5 rounded-2xl font-black text-xl hover:bg-blue-700 transition-all shadow-xl hover:scale-105 active:scale-95"
              >
-               레벨테스트 신청하기
+               상담 신청
              </button>
            </div>
         </div>
