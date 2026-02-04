@@ -1,0 +1,2 @@
+User-agent: *Allow:/
+Sitemap: https://top-englishmath.com/sitemap.xml
